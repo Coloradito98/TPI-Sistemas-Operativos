@@ -2,16 +2,17 @@ package com.ueb.Algoritmos;
 
 public class Proceso {
 	private String nombreProceso;
-	private int duracionProceso;
+	private int tiempoServicio;
 	private int tiempoLlegada;
+	//private int tiempoFinalizacion;
 
 	private int id;
 
-	public Proceso(String pNombreProceso, int pDuracionProceso, int pTiempoLlegada) {
+	public Proceso(String pNombreProceso, int pTiempoServicio, int pTiempoLlegada/*int pTiempoFinalizacion*/) {
 		this.nombreProceso = pNombreProceso;
-		this.duracionProceso = pDuracionProceso;
+		this.tiempoServicio = pTiempoServicio;
 		this.tiempoLlegada = pTiempoLlegada;
-
+		//this.tiempoFinalizacion = pTiempoFinalizacion;
 	}
 
 	public String getNombreProceso() {
@@ -23,11 +24,11 @@ public class Proceso {
 	}
 
 	public int getDuracionProceso() {
-		return duracionProceso;
+		return tiempoServicio;
 	}
 
 	public void setDuracionProceso(int duracionProceso) {
-		this.duracionProceso = duracionProceso;
+		this.tiempoServicio = duracionProceso;
 	}
 
 	public int getTiempoLlegada() {
@@ -37,7 +38,15 @@ public class Proceso {
 	public void setTiempoLlegada(int tiempoLlegada) {
 		this.tiempoLlegada = tiempoLlegada;
 	}
+	
+	/*public int getTiempoFinalizacion() {
+		return tiempoFinalizacion;
+	}
 
+	public void setTiempoFinalizacion(int tiempoFinalizacion) {
+		this.tiempoFinalizacion = tiempoFinalizacion;
+	}
+	*/
 	public int getId() {
 		return id;
 	}

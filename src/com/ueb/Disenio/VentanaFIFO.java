@@ -34,6 +34,7 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 	public static final String BOTON_ALEATORIO = "Datos aleatorios";
 	public static final String BOTON_LIMPIAR = "Limpiar";
 	public static final String BOTON_CALCULAR = "Calcular";
+	public static final String BOTON_INFORME = "Informe";
 
 	public static final int TAMANIO_CELDAS = 35;
 
@@ -45,6 +46,7 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 	private JButton btnAleatorio;
 	private JButton btnLimpiar;
 	private JButton btnCalcular;
+	private JButton btnInforme;
 
 	private JButton btnVolver;
 
@@ -97,6 +99,7 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		this.btnAleatorio = new JButton(BOTON_ALEATORIO);
 		this.btnLimpiar = new JButton(BOTON_LIMPIAR);
 		this.btnCalcular = new JButton(BOTON_CALCULAR);
+		this.btnInforme = new JButton(BOTON_INFORME);
 
 		this.lbCantProcesos = new JLabel("Cantidad de procesos");
 		this.spinnerProcesos = new JSpinner(new SpinnerNumberModel(2, 2, 100, 1));
@@ -113,17 +116,20 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		this.btnAleatorio.setActionCommand(BOTON_ALEATORIO);
 		this.btnLimpiar.setActionCommand(BOTON_LIMPIAR);
 		this.btnCalcular.setActionCommand(BOTON_CALCULAR);
+		this.btnInforme.setActionCommand(BOTON_INFORME);
 
 		this.btnIngresar.addActionListener(this);
 		this.btnAleatorio.addActionListener(this);
 		this.btnLimpiar.addActionListener(this);
 		this.btnCalcular.addActionListener(this);
+		this.btnInforme.addActionListener(this);
 
 		this.btnVolver.addActionListener(pVentanaP);
 
 		this.btnAleatorio.setEnabled(false);
 		this.btnLimpiar.setEnabled(false);
 		this.btnCalcular.setEnabled(false);
+		this.btnInforme.setEnabled(false);
 	}
 
 	private void agregarComponentes() {
@@ -148,10 +154,12 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		this.add(this.btnCalcular);
 		this.btnCalcular.setBounds(210, 260, 130, 40);
 
+		this.add(this.btnInforme);
+		this.btnInforme.setBounds(135, 305, 130, 40);
+
 		this.add(this.btnVolver);
 		this.btnVolver.setBounds(20, 20, 100, 30);
 
-		// this.btnVolver.setBounds(x, y, width, height);
 
 		this.tablaProcesos = this.configurarPorDefectoTablaProcesos();
 
@@ -186,6 +194,9 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 
 		else if (comando.equals(BOTON_CALCULAR))
 			this.ejecutarAlgoritmo();
+		
+		else if (comando.equals(BOTON_INFORME))
+			this.generarInforme();
 
 	}
 
@@ -274,10 +285,11 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		defCellRender.setHorizontalAlignment(SwingConstants.CENTER);
 		table.getColumn(table.getColumnName(2)).setCellRenderer(defCellRender);
 
+		//hacer mas espacio en la tabla de nombre, t.s y t.l
 		// for (int i = 0; i < 3; i++)
 		// {
-		// table.getColumn( table.getColumnName(i) ).setMinWidth(TAMA�O_CELDAS);
-		// table.getColumn( table.getColumnName(i) ).setMaxWidth(TAMA�O_CELDAS);
+		// table.getColumn( table.getColumnName(i) ).setMinWidth(TAMANIO_CELDAS);
+		// table.getColumn( table.getColumnName(i) ).setMaxWidth(TAMANIO_CELDAS);
 		//
 		// defCellRender.setHorizontalAlignment( SwingConstants.CENTER );
 		// table.getColumn( table.getColumnName(i) ).setCellRenderer(defCellRender);
@@ -519,29 +531,18 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 
 		table.setRowHeight(40);
 
-		// DefaultTableCellRenderer defCellRender = new DefaultTableCellRenderer();
-		//
-		// table.getColumn( table.getColumnName(0) ).setMinWidth(81);
-		// table.getColumn( table.getColumnName(0) ).setMaxWidth(81);
-		// defCellRender.setHorizontalAlignment( SwingConstants.CENTER );
-		// table.getColumn( table.getColumnName(0) ).setCellRenderer(defCellRender);
-		//
-		// table.getColumn( table.getColumnName(1) ).setMinWidth(70);
-		// table.getColumn( table.getColumnName(1) ).setMaxWidth(70);
-		// defCellRender.setHorizontalAlignment( SwingConstants.CENTER );
-		// table.getColumn( table.getColumnName(1) ).setCellRenderer(defCellRender);
-		//
-		// table.getColumn( table.getColumnName(2) ).setMinWidth(110);
-		// table.getColumn( table.getColumnName(2) ).setMaxWidth(110);
-		// defCellRender.setHorizontalAlignment( SwingConstants.CENTER );
-		// table.getColumn( table.getColumnName(2) ).setCellRenderer(defCellRender);
-
 		table.setEnabled(false);
 		this.scrollBarAlgoritmo = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.scrollBarAlgoritmo.setBounds(60, 350, 584, 270);
 		this.add(this.scrollBarAlgoritmo);
 
+		this.btnInforme.setEnabled(true);
+		
 	}
 
+
+	public void generarInforme(){
+		
+	}
 }

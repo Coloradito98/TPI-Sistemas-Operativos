@@ -73,10 +73,11 @@ public class FIFO extends AlgoritmoPlanificacion {
 
 		for (int i = 0; i < pCantProcesos; i++) {
 			String nombreProceso = pMatriz[0][i];
-			int duracionProceso = Integer.valueOf(pMatriz[1][i]);
+			int tiempoServicio = Integer.valueOf(pMatriz[1][i]);
 			int llegadaProceso = Integer.valueOf(pMatriz[2][i]);
+			//int tiempoFinalizacion = Integer.valueOf(pMatriz[3][i]);
 
-			nuevo = new Proceso(nombreProceso, duracionProceso, llegadaProceso);
+			nuevo = new Proceso(nombreProceso, tiempoServicio, llegadaProceso/*tiempoFinalizacion*/);
 
 			this.totalProcesos.add(nuevo);
 		}
