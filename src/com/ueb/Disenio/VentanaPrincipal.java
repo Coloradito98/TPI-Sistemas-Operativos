@@ -52,7 +52,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 	public VentanaPrincipal() {
 		this.configurarVentanaPrincipal();
-
 		this.inicializarComponentes();
 		this.configurarComponentes();
 		this.agregarComponentes();

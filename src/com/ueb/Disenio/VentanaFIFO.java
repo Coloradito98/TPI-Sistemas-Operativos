@@ -65,6 +65,12 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 	private FIFO algoritmo;
 
 	private int cantUltIngresada;
+	
+	// ---------------------------------------------------------------------------------------------------
+	// RELACIONES
+	// ---------------------------------------------------------------------------------------------------
+
+	private VentanaInforme ventanaInforme;
 
 	// --------------------------------------
 	// CONSTRUCTOR
@@ -74,6 +80,7 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		this.configurarVentanaFCFS();
 		this.inicializarComponentes();
 		this.configurarBotones(pVentanaP);
+		this.configurarComponentes();
 		this.agregarComponentes();
 	}
 
@@ -109,6 +116,27 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 
 		this.lbFondo = new JLabel();
 		this.lbFondo.setIcon(new ImageIcon("./source/fondoGeneral.png"));
+
+		this.ventanaInforme = new VentanaInforme(this);
+	}
+
+	private void configurarComponentes() {
+		this.btnInforme.setActionCommand(BOTON_INFORME);
+		this.btnInforme.addActionListener(this);
+
+		this.mostrarVentanaFIFO();
+	}
+
+	private void mostrarVentanaFIFO() {
+		this.setVisible(true);
+
+		this.ventanaInforme.setVisible(false);
+	}
+
+	private void mostrarInforme() {
+		this.setVisible(false);
+		this.ventanaInforme = new VentanaInforme(this);
+		this.ventanaInforme.setVisible(true);
 	}
 
 	private void configurarBotones(VentanaPrincipal pVentanaP) {
@@ -195,8 +223,9 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		else if (comando.equals(BOTON_CALCULAR))
 			this.ejecutarAlgoritmo();
 		
-		else if (comando.equals(BOTON_INFORME))
-			this.generarInforme();
+		else if (comando.equals(VentanaFIFO.BOTON_INFORME)) {
+		this.mostrarInforme();
+		}
 
 	}
 
@@ -541,8 +570,4 @@ public class VentanaFIFO extends JFrame implements ActionListener {
 		
 	}
 
-
-	public void generarInforme(){
-		
-	}
 }
